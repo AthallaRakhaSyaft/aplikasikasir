@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulir Presensi Kasir</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>FORMULIR PRESENSI ADMIN KASIR</h1>
+        <b><p>Selamat Datang di Presensi Admin Kasir.</p></b>
+        <b><p>Silahkan mengisi presensi admin kasir dibawah ini!</p></b>
+        <P></P>
+        
+        <button id="presensiButton">Presensi</button>
+
+        <p>
+        <button id="listButton">List Kehadiran</button>
+        </p>
+
+       <p>Untuk mengisi data pribadi kehadiran sebagai admin kasir bisa klik tombol <u><b>Presensi</b></u></p> 
+       <p>Untuk melihat list kehadiran admin kasir kehadiran bisa klik tombol <u><b>List Kehadiran</b></u></p>
+       
+       <!-- Tambahkan elemen untuk menampilkan waktu -->
+
+        <form method="post" action="save_time.php">
+            <b><label for="time">Waktu:</label></b>
+            <input type="text" id="time" name="time" readonly>
+            <button type="submit">Simpan Waktu</button>
+        </form>
+       <div id="clock"></div>
+    </div>
+
+    
+
+    <script>
+        // Get references to the Presensi and List Kehadiran buttons
+        const presensiButton = document.getElementById("presensiButton");
+        const listButton = document.getElementById("listButton");
+
+        // Add click event listeners to the buttons
+        presensiButton.addEventListener("click", function() {
+            // Perform an action when the Presensi button is clicked
+            window.location.href = 'createdata.php'; // Redirect to createdata.php
+        });
+
+        listButton.addEventListener("click", function() {
+            // Perform an action when the List Kehadiran button is clicked
+            window.location.href = 'retrieve.php'; // Redirect to retrieve.php
+        });
+
+        // Function to display current time
+        function displayTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        // Update time every second
+        setInterval(displayTime, 1000);
+
+        // Display time immediately when page loads
+        displayTime();
+
+        // Function to display current time
+        function displayTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('time').value = timeString;
+        }
+
+        // Display time immediately when page loads
+        displayTime();
+    </script>
+</body>
+</html>
