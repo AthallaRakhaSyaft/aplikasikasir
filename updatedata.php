@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lihat Data Admin</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Lihat Data Kasir</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Warna latar belakang untuk halaman */
+            color: #333; /* Warna teks */
+        }
+
+        h1 {
+            text-align: center;
+            color: #336699; /* Warna untuk judul */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff; /* Warna latar belakang untuk tabel */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Efek bayangan untuk tabel */
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd; /* Garis bawah untuk sel tabel */
+            border-right: 1px solid #ddd; /* Garis kanan untuk sel tabel */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Warna latar belakang untuk sel header tabel */
+        }
+
+        tr:last-child td {
+            border-bottom: none; /* Menghilangkan garis bawah pada baris terakhir */
+        }
+
+        tr:hover {
+            background-color: #f2f2f2; /* Warna latar belakang saat baris dihover */
+        }
+    </style>
 </head>
 <body>
-    <h1>Data Admin</h1>
+    <h1>Data Kasir</h1>
     <table>
         <tr>
             <th>Id</th>
             <th>Nama</th>
             <th>Kehadiran</th>
+            <th>Tanggal</th>
         </tr>
         <?php
         $host = "localhost";
@@ -34,53 +72,14 @@
                 echo "<td>" . $row["id"] . "</td>";
                 echo "<td>" . $row["nama"] . "</td>";
                 echo "<td>" . $row["kehadiran"] . "</td>";
+                echo "<td>" . $row["tanggal"] . "</td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='3'>Tidak ada data admin</td></tr>";
+            echo "<tr><td colspan='5'>Tidak ada data admin</td></tr>";
         }
         $conn->close();
         ?>
-
-        <style>
-            /* styles.css */
-
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Background color for the entire page */
-    }
-
-    h1 {
-    text-align: center;
-    color: #333; /* Color for the heading */
-    }
-
-    table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #fff; /* Background color for the table */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect for the table */
-    }
-
-    th, td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd; /* Bottom border for table cells */
-    }
-
-    th {
-    background-color: #f2f2f2; /* Background color for table header cells */
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9; /* Background color for even rows */
-}
-
-tr:hover {
-    background-color: #f2f2f2; /* Background color for hovered rows */
-}
-
-        </style>   
     </table>
 </body>
 </html>
