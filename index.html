@@ -6,9 +6,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>FORMULIR PRESENSI ADMIN KASIR</h1>
-        <b><p>Selamat Datang di Presensi Admin Kasir.</p></b>
-        <b><p>Silahkan mengisi presensi admin kasir dibawah ini!</p></b>
+        <h1>FORMULIR PRESENSI KASIR</h1>
+        <b><p>Selamat Datang di Presensi Kasir.</p></b>
+        <b><p>Silahkan mengisi presensi kasir dibawah ini!</p></b>
         <P></P>
         
         <button id="presensiButton">Presensi</button>
@@ -17,22 +17,17 @@
         <button id="listButton">List Kehadiran</button>
         </p>
 
-       <p>Untuk mengisi data pribadi kehadiran sebagai admin kasir bisa klik tombol <u><b>Presensi</b></u></p> 
-       <p>Untuk melihat list kehadiran admin kasir kehadiran bisa klik tombol <u><b>List Kehadiran</b></u></p>
+       <p>Untuk mengisi data pribadi kehadiran sebagai kasir bisa klik tombol <u><b>Presensi</b></u></p> 
+       <p>Untuk melihat list kehadiran kasir bisa klik tombol <u><b>List Kehadiran</b></u></p>
        
-       <!-- Tambahkan elemen untuk menampilkan waktu -->
-
-        <form method="post" action="save_time.php">
-            <b><label for="time">Waktu:</label></b>
-            <input type="text" id="time" name="time" readonly>
-            <button type="submit">Simpan Waktu</button>
-        </form>
-       <div id="clock"></div>
+       <h3>Waktu Saat Ini:</h3>
+       <div id="clock"></div> <!-- Menampilkan waktu saat ini -->
+       <h3>Tanggal Hari Ini:</h3>
+       <div id="tanggal">?</div> <!-- Menampilkan tanggal saat ini -->
     </div>
 
-    
-
     <script>
+
         // Get references to the Presensi and List Kehadiran buttons
         const presensiButton = document.getElementById("presensiButton");
         const listButton = document.getElementById("listButton");
@@ -48,34 +43,30 @@
             window.location.href = 'retrieve.php'; // Redirect to retrieve.php
         });
 
-        // Function to display current time
         function displayTime() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('clock').textContent = timeString;
+            var date = new Date();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var seconds = date.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Mengatasi jam 0 menjadi 12
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            var time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            document.getElementById('clock').innerText = time;
+            setTimeout(displayTime, 1000); // Memperbarui setiap detik
         }
 
-        // Update time every second
-        setInterval(displayTime, 1000);
+        window.onload = function() {
+            displayTime(); // Panggil fungsi untuk menampilkan waktu saat halaman dimuat
+            var tanggal = document.getElementById('tanggal');
+            var today = new Date();
+            tanggal.innerText = today.toLocaleDateString(); // Mengisi div tanggal dengan tanggal hari ini
+        };
 
-        // Display time immediately when page loads
-        displayTime();
-
-        // Function to display current time
-        function displayTime() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeString = `${hours}:${minutes}:${seconds}`;
-            document.getElementById('time').value = timeString;
-        }
-
-        // Display time immediately when page loads
-        displayTime();
     </script>
-</body>
+
 </html>
