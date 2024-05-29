@@ -39,6 +39,7 @@ $result = mysqli_query($conn, $query);
                 <th>Id</th>
                 <th>Nama</th>
                 <th>Kehadiran</th>
+                <th>Tanggal</th>
                 <th>Action</th>
             </tr>
             <?php
@@ -49,8 +50,10 @@ $result = mysqli_query($conn, $query);
                         <td>$rec[id]</td>
                         <td>$rec[nama]</td>
                         <td>$rec[kehadiran]</td>
+                        <td>$rec[tanggal]</td>
                         <td>
                             <button><a href='updatedata.php?id=$rec[id]'>Lihat</a></button>
+                            <p></p>
                             <button><a href='{$_SERVER['PHP_SELF']}?delete=true&id=$rec[id]'>Hapus</a></button>
                         </td>
                     </tr>";
