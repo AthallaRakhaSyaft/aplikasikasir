@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lihat Data Admin</title>
+    <title>Lihat Data Kasir</title>
     <style>
         /* CSS styles */
         body {
@@ -44,6 +44,7 @@
             <th>Id</th>
             <th>Nama</th>
             <th>Kehadiran</th>
+            <th>Tanggal</th>
         </tr>
         <?php
         $host = "localhost";
@@ -66,6 +67,7 @@
                 echo "<td>" . $row["id"] . "</td>";
                 echo "<td>" . $row["nama"] . "</td>";
                 echo "<td>" . $row["kehadiran"] . "</td>";
+                echo "<td>" . $row["tanggal"] . "</td>";
                 echo "</tr>";
             }
         } else {
