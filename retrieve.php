@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $query);
 <body>
     <div class="container">
         <h1>Formulir Presensi Kasir</h1>
-        <a href='createdata.php'>Tambah Data</a>
+        <!-- <a href='createdata.php'>Tambah Data</a> -->
         <table cellpadding='5' border='1'>
             <tr>
                 <th>No</th>
